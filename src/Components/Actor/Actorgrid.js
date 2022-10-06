@@ -1,10 +1,11 @@
 import React from 'react';
 import Actorcard from './Actorcard';
 import IMPORTED_IMAGE from '../../not-found.png';
+import { Flexstyle } from '../Styled';
 
 const Actorgrid = ({ results }) => {
   return (
-    <div>
+    <Flexstyle>
       {results.map(({ person }) => (
         <Actorcard
           key={person.id}
@@ -16,7 +17,7 @@ const Actorgrid = ({ results }) => {
           deathday={person.deathday}
         />
       ))}
-    </div>
+    </Flexstyle>
   );
 };
 
