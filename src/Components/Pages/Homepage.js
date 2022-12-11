@@ -3,6 +3,7 @@ import Mainpage from '../Mainpage';
 import { apiGet } from '../../misc/config';
 import Showgrid from '../Show/Showgrid';
 import Actorgrid from '../Actor/Actorgrid';
+import { RadioInputsWrapper, SearchButtonWrapper, SearchInput } from './Home.styled';
 
 const Homepage = () => {
   const [input, setInput] = useState('');
@@ -30,7 +31,10 @@ const Homepage = () => {
     }
   };
   const renderResults = () => {
-    if (output?.length === 0) {
+    if (output===''){
+      return
+    }
+    else if (output?.length === 0) {
       return <div>no results</div>;
     }
     if (output?.length > 0) {
@@ -52,15 +56,16 @@ const Homepage = () => {
   };
   return (
     <Mainpage>
-      <input
+      <SearchInput
         type="text"
         onChange={onInputChange}
         onKeyDown={onKeyDown}
         value={input}
         placeholder="Search for something"
       />
-      <button onClick={() => onSearch()}>Search</button>
-      <div>
+
+      <RadioInputsWrapper>
+        <div>
         <label>
           Shows
           <input
@@ -70,6 +75,8 @@ const Homepage = () => {
             value="shows"
           ></input>
         </label>
+        </div>
+        <div>
         <label>
           Actors
           <input
@@ -79,7 +86,11 @@ const Homepage = () => {
             value="people"
           ></input>
         </label>
-      </div>
+        </div>
+      </RadioInputsWrapper>
+      <SearchButtonWrapper>
+      <button onClick={() => onSearch()}>Search</button>
+      </SearchButtonWrapper>
       {renderResults()}
     </Mainpage>
   );
