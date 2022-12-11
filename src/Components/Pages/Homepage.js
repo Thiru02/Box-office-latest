@@ -34,7 +34,7 @@ const Homepage = () => {
       return <div>no results</div>;
     }
     if (output?.length > 0) {
-      console.log(output);
+      // console.log(output);
       return (
         <div>
           {output[0].show ? (
